@@ -94,12 +94,21 @@ it ('seleciona um produto (Blog) por seu índice', function (){
   expect($input[0].files[0].name).to.equal('example.json')
  })
 })
- it.only ('seleciona um arquivo simulando um drag-and-drop', function (){
+ it ('seleciona um arquivo simulando um drag-and-drop', function (){
   cy.get('input[type="file"]')
  .selectFile('cypress/fixtures/example.json', {action: 'drag-drop'})
  .should(function($input){
   expect($input[0].files[0].name).to.equal('example.json')
                         })
       })
+  it('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', function (){
+     cy.get('#privacy a').should('have.attr', 'target', '_blank')
+  }) 
+  it ('acessa a página da política de privacidade removendo o target e então clicando no link', function(){
+    cy.get('#privacy a').invoke('removeAttr', 'target')
+  })   
+  it ('testa a página da política de privacidade de forma independente', function (){
+    cy.get('#privacy a')
+  })
 })
 
