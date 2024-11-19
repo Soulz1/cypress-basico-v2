@@ -102,5 +102,8 @@ it ('seleciona um produto (Mentoria) por seu valor (value)', function (){
   it ('testa a página da política de privacidade de forma independente', function (){
     cy.get('#privacy a')
   })
+  it.only ('onde está o gato', function () {
+    cy.get('#cat').invoke('show')
+  })
 })
 
